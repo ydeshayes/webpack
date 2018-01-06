@@ -9,7 +9,11 @@ build:
 web:
     locations:
         "/":
+            {{#if platformshvar}}
             root: "build_platform"
+            {{else}}
+            root: "dist"
+            {{/if}}
             index:
                 - "index.html"
             expires: 300s
@@ -22,9 +26,11 @@ web:
                     allow: true
 
 disk: 2048
+{{#platformshvar}}
 mounts:
   '/build_platform': 'shared:files/build_platform'
   '/.tmp_platformsh': 'shared:files/tmp_platformsh'
+{{/platformshvar}}
 dependencies:
   nodejs:
     yarn: "*"
@@ -34,5 +40,7 @@ hooks:
       set -e
       yarn install
       npm run build
+    {{#platformshvar}}
     deploy: |
       npm run buildenvvar
+    {{/platformshvar}}

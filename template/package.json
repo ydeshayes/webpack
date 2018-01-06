@@ -22,8 +22,9 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
     {{/lint}}
-    "build": "node build/build.js",
+    "build": "node build/build.js"{{#platformshvar}},
     "buildenvvar": "platform-var dist"
+    {{/platformshvar}}
   },
   "dependencies": {
     "vue": "^2.5.2"{{#router}},
@@ -101,7 +102,9 @@
     "html-webpack-plugin": "^2.30.1",
     "webpack-bundle-analyzer": "^2.9.0",
     "node-notifier": "^5.1.2",
+    {{#platformshvar}}
     "platformsh_variables": "1.0.5",
+    {{/platformshvar}}
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",

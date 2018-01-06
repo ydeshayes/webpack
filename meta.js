@@ -23,7 +23,7 @@ module.exports = {
       return templateVersion
     },
   },
-  
+
   prompts: {
     name: {
       type: 'string',
@@ -60,6 +60,10 @@ module.exports = {
     router: {
       type: 'confirm',
       message: 'Install vue-router?',
+    },
+    platformshvar: {
+      type: 'confirm',
+      message: 'You need platformsh variable at runtime?',
     },
     lint: {
       type: 'confirm',
